@@ -242,8 +242,8 @@ button:hover{
 	
 }
 .cercato img {
-	width: 80%;
-	height: 250px;
+	max-width: 80%;
+	max-height: 350px;
 	
 	margin: 10px;
 	
@@ -503,7 +503,7 @@ em {
 
 #preferiti img{
 	max-width: 200px;		/*Scoperto dopo la consegna del mhw2*/
-	max-height: 200px;
+	max-height: 300px;
 }
 
 .elemento{
