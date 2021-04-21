@@ -4,12 +4,10 @@ const header = document.querySelector('header');
 
 fetch("https://picsum.photos/2000/400").then(onResponse, onError);// /2000 indica la larghezza immagine, 400 l'altezza, rappresentano un buon compromesso
 
-
 function onResponse(response){
     /*console.log(response);*/
     header.style.backgroundImage = "url("+response.url+")";
 }
-
 function onError(error){
     console.log(error);
     header.style.backgroundImage = "url(img.jpg)";
@@ -18,43 +16,43 @@ function onError(error){
 
 //Immagini per le section: picsum.photos
 const sections = document.querySelectorAll('section');
-async function updateSection(index) {
-    // Fetch a random pic from the picsum.photos
-    const response = await fetch("https://picsum.photos/800/400");
-    const data = await response.url;
-    if (response.ok) {
-      // Update DOM elements
-      sections[index].style.backgroundImage = "url("+data+")";
-	  sections[index].style.backgroundSize = "cover";
-    } else {
-     console.log(error);
-    sections[index].style.backgroundImage = "url(img.jpg)";
-	sections[index].style.backgroundSize = "cover";
-    }
-  }
- for(let i = 0; i< sections.length; i++){
-	updateSection(i); 
+
+function ackImg(response){
+	for(let i= 0; i<sections.length; i++){
+		if(sections[i].style.backgroundImage == ''){
+			sections[i].style.backgroundImage = "url("+response.url+")";
+			sections[i].style.backgroundSize = "cover";
+			break;
+		}
+	}
+}
+function nackImg(error){
+	 console.log(error);
+}
+
+for(let i = 0; i< sections.length; i++){
+	fetch("https://picsum.photos/800/400").then(ackImg, nackImg);
  }
 
 //API senza autenticazione : Citazioni per gli articles: Personality -> Quotable Quotes
- const quotes = document.querySelectorAll("blockquote p");
- const cites = document.querySelectorAll("blockquote h3");
+const quotes = document.querySelectorAll("blockquote p");
+const cites = document.querySelectorAll("blockquote h3");
 
-async function updateQuote(index) {
-    // Fetch a random quote from the Quotable API
-    const response = await fetch("https://api.quotable.io/random");
-    const data = await response.json();
-    if (response.ok) {
-      // Update DOM elements
-      quotes[index].textContent = data.content;
-	  cites[index].textContent = data.author;
-    } else {
-      quotes[index].textContent = "An error occured";
-      console.log(data);
-    }
-  }
- for(let i = 0; i < quotes.length; i++){
-	  updateQuote(i);
+function ackQuote(response){
+	return response.json();
+}
+function onQuote(json){
+	 for(let i= 0; i<quotes.length; i++){
+		if(quotes[i].textContent == ''){
+			quotes[i].textContent = json.content;
+			cites[i] = json.author;
+			break;
+		}
+	}
+}
+
+for(let i = 0; i< quotes.length; i++){
+	fetch("https://api.quotable.io/random").then(ackQuote).then(onQuote);
  }
  
  //Servizio con API KEY: il logo del profilo tra l'header e la nav Geocoding-> Abstract IP Geolocation
