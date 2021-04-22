@@ -68,8 +68,8 @@ header{
 	justify-content:center;
 	
 	position: relative;
-	width: 100%;
-    height: 80%;
+	width: 90%;
+    height: 95%;
     background-color: rgba(0, 0, 0, 0.3);
 	border-radius: 10px;
 	
@@ -128,7 +128,6 @@ a{
     cursor:pointer;
 	
 }
-/*INIZIO PARTE NUOVA MHW2*/
 
 #barra{
 	display:flex;
@@ -178,21 +177,30 @@ button:hover{
 	margin: 2px;
 	padding: 10px;
 	
-	width: 25%;
-	height: 80%;
+	/*width: 30%;*/
+	/*height: 80%;*/
+	max-width: 30%;/*modifica rispetto al mhw2 originale*/
+	max-height: 90%;
 	
 	font-size: 80%;
 
+}
+.oggetto h2{/*modifica rispetto al mhw2 originale*/
+	font-size: 16px;
+}
+.oggetto h3{/*modifica rispetto al mhw2 originale*/
+	font-size: 12px;
 }
 
 .oggetto button{
 	border-radius: 10px;
 	font-size: 80%;
 	width: 75%;
-	height: 35%;
+	max-height: 40px;
+	
+	min-width: 100px;/*modifica rispetto al mhw2 originale*/
 	
 }
-
 
 .divisore img{
 	width: 80%;
@@ -252,7 +260,6 @@ button:hover{
 	
 	border-radius: 50px;
 }
-/*FINE PARTE NUOVA MHW2*/
 
 section{
 	display:flex;
@@ -260,7 +267,7 @@ section{
 	justify-content: space-between;
 	align-content: center;
 	
-	align-items: center;	/*Modificato rispetto al mhw2 consegnato precedentemente*/
+	align-items: center;	/*modificato rispetto al mhw2 originale*/
 	
 	border: 2px solid green;
 	border-radius: 10px;
@@ -271,6 +278,8 @@ section{
 	position: relative;
 	
 	width: 93%;
+	max-height: 480%;
+	min-width: 600px;
 	
 	background-color: rgb(245, 245, 220, 0.9);/*beige -> delicato*/
 	
@@ -280,6 +289,8 @@ section{
 	font-size: 100%;
 	color: black;
 	line-height: 25px;
+	
+	
 	
 }
 section a:link {
@@ -317,7 +328,7 @@ section a:link {
 	align-content: center;
 	
 	width: 98%;
-	/*height: 40%;*/
+	height: 570px;/*modificato rispetto al mhw2 originale*/
 	
 	margin-top: 15px;
 	margin-bottom: 15px;
@@ -341,7 +352,9 @@ section a:link {
 	
 	position: relative;
 	width: 98%;
-	height: 580px;
+	height: 40%;/*modificato rispetto al mhw2 originale*/
+	
+	max-height: 700px;
 	
 	border: 1px solid blue;
 	border-radius: 10px;
@@ -586,7 +599,7 @@ footer a{
 
 
 /*Adattamento per la larghezza della finestra:*/
-@media(max-width: 500px){
+@media(max-width: 500px){	
 	header{
         height: 400px;
 		width: 490px;
@@ -600,14 +613,18 @@ footer a{
     }
 	section{
         width: 490px;
-		height: 3600px;
+		/*height:3600px; modifica rispetto al mhw2 originale*/
+		min-width: 250px; /*modifica rispetto al mhw2 originale*/
+		max-height: 800%; /*modifica rispetto al mhw2 originale*/
     }
 	
 	.riga{
         margin: 0px;
 		padding: 1px;
 		flex-direction: column;
-		height: 6200px;
+		height: 100%;	/*modifica rispetto al mhw2 originale*/
+		max-height: 12200px;/*modifica rispetto al mhw2 originale*/
+		
     }
 	#annuncio{
         margin: 0px;
@@ -654,10 +671,15 @@ footer a{
 		border-radius: 100px;
 		
 	}
-	
+	.overlay {
+		width: 100%; /*modifica rispetto al mhw2 originale*/
+		height: 100%;/*modifica rispetto al mhw2 originale*/
+	}
 	.divisore{
         width: 490px;
 		height: 400px;
+		margin-top: 40px;	/*modifica rispetto al mhw2 originale*/
+		margin-bottom: 40px;	/*modifica rispetto al mhw2 originale*/
     }
 	
 	.divisore img{

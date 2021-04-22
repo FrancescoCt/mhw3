@@ -45,7 +45,7 @@ function onQuote(json){
 	 for(let i= 0; i<quotes.length; i++){
 		if(quotes[i].textContent == ''){
 			quotes[i].textContent = json.content;
-			cites[i] = json.author;
+			cites[i].textContent = json.author;
 			break;
 		}
 	}
